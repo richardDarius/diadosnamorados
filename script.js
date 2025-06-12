@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- INICIALIZAÇÃO DO MAPA ---
   const map = L.map('map').setView([-23.7608, -46.3336], 9);
 
-  L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_satellite/{z}/{x}/{y}{r}.png', {
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution:
     '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
