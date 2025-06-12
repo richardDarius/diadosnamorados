@@ -8,7 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const map = L.map('map').setView([-23.7608, -46.3336], 9);
 
   L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_satellite/{z}/{x}/{y}{r}.png', {
-    attribution: '&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>'
+    attribution:
+      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   }).addTo(map);
 
   // --- DADOS DOS LUGARES (COM FOTOS DE EXEMPLO) ---
