@@ -108,7 +108,6 @@ document.getElementById("play-button").addEventListener("click", async () => {
 
   try {
     await audio.play();
-    audio.currentTime = 19;
   } catch (error) {
     console.error("Erro ao iniciar o áudio:", error);
   }
