@@ -64,7 +64,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     { nome: "Casa brawl", coords:[-23.642398, -46.527304], fotos:[
       'lugares/brawlhouse.jpg',
       'lugares/casabrawl.jpg',
-      '"lugares/casabrawl (2).jpg",'
+      "lugares/casabrawl (2).jpg"
     ]},
     { nome: "Ape de santos", coords:[-23.954469, -46.337621], fotos: [
       'lugares/santoscasa.jpg',
@@ -218,19 +218,14 @@ function mudarFoto(direcao) {
 function atualizarVisualizacaoGaleria() {
   const imgElement = document.getElementById('galeria-imagem');
   const contadorElement = document.getElementById('galeria-contador');
-  const anteriorBtn = document.getElementById('galeria-anterior');
-  const proximaBtn = document.getElementById('galeria-proxima');
+
+  if (!imgElement || !contadorElement || fotosAtuais.length === 0) return;
 
   // Atualiza a imagem
   imgElement.src = fotosAtuais[indiceAtual];
 
-  // Atualiza o contador (ex: "2 / 5")
+  // Atualiza o contador (ex: 3 / 10)
   contadorElement.textContent = `${indiceAtual + 1} / ${fotosAtuais.length}`;
-
-  // Esconde as setas de navegação se houver apenas uma foto
-  const mostrarSetas = fotosAtuais.length > 1;
-  anteriorBtn.style.display = mostrarSetas ? 'flex' : 'none';
-  proximaBtn.style.display = mostrarSetas ? 'flex' : 'none';
 }
 
 
