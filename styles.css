@@ -2,9 +2,9 @@
 body {
   margin: 0;
   height: 100vh;
-  background: linear-gradient(270deg, #ff6ec4, #544ef7,  #ff2929c5, #ff14d88f);
+  background: linear-gradient(270deg, #fdff97, #91b8ff,  #ff414191, #ff00d4a1);
   background-size: 800% 800%;
-  animation: gradientBG 19s ease infinite;
+  animation: gradientBG 12s ease infinite;
 }
 
 @keyframes gradientBG {
