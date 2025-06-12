@@ -2,7 +2,7 @@
 body {
   margin: 0;
   height: 100vh;
-  background: linear-gradient(270deg, #fdff97, #91b8ff,  #ff414191, #ff00d4a1);
+  background: linear-gradient(270deg, #fdff97, #ff4141b4, #ff00d4a1);
   background-size: 800% 800%;
   animation: gradientBG 12s ease infinite;
 }
