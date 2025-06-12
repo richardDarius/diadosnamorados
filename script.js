@@ -17,7 +17,6 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   const lugares = [
     { nome: "Ilha do guaiuba", coords: [-24.025550, -46.293297], fotos: [
       'lugares/ilha (2).jpg',
-      'lugares/ilha (3).jpg',
       'lugares/ilha (4).jpg',
       'lugares/ilha (5).jpg',
       'lugares/ilha (6).jpg',
