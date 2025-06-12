@@ -102,15 +102,22 @@
 
   <script>
     // Espera pelo clique do usuário
-    document.getElementById("play-button").addEventListener("click", () => {
-      const audio = document.getElementById("bg-music");
-      audio.currentTime = 19; // começa a tocar aos 15 segundos
-      audio.volume = 0.7;
-      audio.play();
+document.getElementById("play-button").addEventListener("click", () => {
+  const audio = document.getElementById("bg-music");
+  audio.volume = 0.7;
 
-      document.getElementById("intro").style.display = "none";
-      document.getElementById("content").style.display = "block";
-    });
+  audio.addEventListener("canplaythrough", () => {
+    audio.currentTime = 20;
+    audio.play();
+  }, { once: true }); // dispara só uma vez
+
+  // Força o carregamento
+  audio.load();
+
+  // Oculta a intro e mostra o conteúdo
+  document.getElementById("intro").style.display = "none";
+  document.getElementById("content").style.display = "block";
+});
 
     // Estrelas
     const canvas = document.getElementById("stars");
