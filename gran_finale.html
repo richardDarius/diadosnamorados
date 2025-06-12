@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <title>Fundo Estrelas Caindo</title>
+  <style>
+    body {
+      margin: 0;
+      background: radial-gradient(ellipse at bottom, #0d1d31 0%, #0c0d13 100%);
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .center-text {
+      width: 100vw;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      z-index: 1;
+      padding: 2rem;
+    }
+
+    .center-text h1 {
+      font-size: 3em;
+      line-height: 1.3;
+      max-width: 800px;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 2rem auto;
+      text-align: center;
+      padding: 0 1rem;
+    }
+
+    #intro {
+      position: fixed;
+      inset: 0;
+      background: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    #play-button {
+      padding: 1.5rem 3rem;
+      font-size: 2rem;
+      background: white;
+      color: black;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Tela de Introdução -->
+  <div id="intro">
+    <button id="play-button">▶</button><br>
+  </div>
+  <!-- Áudio escondido -->
+  <audio id="bg-music" loop>
+    <source src="Bryan Adams - Heaven.mp3" type="audio/mpeg">
+    Seu navegador não suporta áudio.
+  </audio>
+
+  <!-- Canvas -->
+  <canvas id="stars"></canvas>
+
+  <!-- Conteúdo -->
+  <div id="content" style="display: none;">
+    <div class="container">
+      <h1>Feliz dia dos namorados minha estrelinha te amo <i class="bi bi-stars"></i><i class="bi bi-stars"></i></h1>
+    <p class="container">
+      Amanda Ferreira Horcel, você pra mim é símbolo de resiliência. Mesmo com tantas coisas terem acabado de acontecer quando me conheceu — coisas essas que poderiam afetar negativamente a vida de qualquer um por bons anos — você se mostrou uma pessoa verdadeiramente pura e íntegra desde que te conheci...
+    </p>
+    <p class="container">
+      Espero que você nunca desista de ser feliz diante das adversidades que a vida nos impõe. Estarei aqui contigo pra te ouvir, aconselhar, acalmar, animar, divertir e principalmente te amar! Obrigado minha macaquinha inspiradora, você é TUDO o que eu sempre quis!! AMO VOCÊ !!!!!!!!!!!!!!!!!!!!!!!!!!!
+    </p>
+    </div>
+  </div>
+
+  <script>
+    // Espera pelo clique do usuário
+    document.getElementById("play-button").addEventListener("click", () => {
+      const audio = document.getElementById("bg-music");
+      audio.currentTime = 19; // começa a tocar aos 15 segundos
+      audio.volume = 0.4;
+      audio.play();
+
+      document.getElementById("intro").style.display = "none";
+      document.getElementById("content").style.display = "block";
+    });
+
+    // Estrelas
+    const canvas = document.getElementById("stars");
+    const ctx = canvas.getContext("2d");
+
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+    canvas.width = width;
+    canvas.height = height;
+
+    const numStars = 100;
+    const stars = [];
+
+    for (let i = 0; i < numStars; i++) {
+      const spacing = width / numStars;
+      stars.push({
+        x: i * spacing + Math.random() * spacing,
+        y: Math.random() * height,
+        length: Math.random() * 50 + 10,
+        speed: Math.random() * 1.5 + 0.5,
+        opacity: Math.random() * 0.5 + 0.4,
+      });
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, width, height);
+
+      stars.forEach((star) => {
+        ctx.beginPath();
+        const gradient = ctx.createLinearGradient(
+          star.x,
+          star.y + star.length,
+          star.x,
+          star.y
+        );
+        gradient.addColorStop(0, `rgba(255,255,255,${star.opacity})`);
+        gradient.addColorStop(1, "rgba(255,255,255,0)");
+        ctx.strokeStyle = gradient;
+        ctx.lineWidth = 2;
+        ctx.moveTo(star.x, star.y);
+        ctx.lineTo(star.x, star.y + star.length);
+        ctx.stroke();
+
+        star.y += star.speed;
+        if (star.y > height) {
+          star.y = -star.length;
+        }
+      });
+
+      requestAnimationFrame(draw);
+    }
+
+    draw();
+
+    window.addEventListener("resize", () => {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+    });
+  </script>
+</body>
+</html>
