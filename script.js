@@ -118,7 +118,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       "lugares/ibira (4).jpg",
       "lugares/ibira (5).jpg"
     ]},
-    {nome: "Parque Augusta", coords:[-23.565041, -46.654201], fotos: [
+    {nome: "Parque Augusta", coords:[-23.550162, -46.648758], fotos: [
       "lugares/parqueaugusta (2).jpg",
       "lugares/parqueaugusta (3).jpg",
       "lugares/parqueaugusta (4).jpg"
